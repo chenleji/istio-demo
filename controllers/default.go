@@ -51,7 +51,7 @@ func (c *MainController) Get() {
 		for _, service := range serviceList {
 			resp := new(CtlResp)
 			header := map[string]string{
-				"head": service,
+				"host": service,
 			}
 
 			err := helper.HttpClient{Service: service}.GetWithHeader(resp, "/", header, []string{})
