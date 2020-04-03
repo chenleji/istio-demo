@@ -81,6 +81,7 @@ func (c Client) Endpoint() endpoint.Endpoint {
 		ctx, cancel := context.WithCancel(ctx)
 		defer cancel()
 
+		print("$$$$$$$$$$$$$$$$$$$$$$$")
 		var (
 			resp *http.Response
 			err  error
@@ -109,6 +110,10 @@ func (c Client) Endpoint() endpoint.Endpoint {
 
 		for k, v := range headers {
 			req.Header.Set(k, v)
+			if k == "host" || k == "Host" {
+				req.Host = v
+				print("------------------------")
+			}
 		}
 
 		// encode reqObj
